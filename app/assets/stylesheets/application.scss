@@ -1,0 +1,64 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.title {
+	text-align: center;
+}
+body {
+	background-color: #FFF8F0;
+
+}
+
+.search {
+	width: 100%;
+	height: 200px;
+	text-align: center;
+}
+
+.form-inline {
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	margin-top: 2%; 
+}
+
+.fa-location-arrow{
+	width: 32px;
+	height: 34px;
+	border-radius: 15%;
+	background-color: #90F090;
+	border: 2px solid #90F090;
+	color: white;
+}
+
+
+
+.map {
+	width: 50%;
+	height: 400px;
+	background-color: black;
+	margin: 0 auto;
+	opacity: 0.6;
+  	filter: alpha(opacity=60);
+}
+
+
+
+.btn-default {
+	background-color: #90F090;
+	border: 2px solid #90F090;
+	height: 34px;
+
+	color: white;
+}
+
+hr{
+	border: 2px solid black;
+	width: 80%;
+}
+
+
+
+
+
+

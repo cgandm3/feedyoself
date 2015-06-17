@@ -2,12 +2,17 @@
 <html>
 <head>
   <title>Feedyoself</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="css/hover.css" rel="stylesheet" media="all">
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="title">
+<h1 >FEED YO'SELF</h1>
+<div></div>
+<hr>
 <%= yield %>
 
 </body>

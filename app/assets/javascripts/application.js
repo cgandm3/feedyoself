@@ -14,7 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree 
+//= require_tree
 // $p = $("<p>current location</p>")
 
 // $(document).ready(function(){
@@ -22,11 +22,11 @@
 // 		$(this).after("<button class = 'btn btn-default'>current location</button>");
 //   })
 
-	
+
 
 	// $("button").mouseover(function(){
 	// 	$('#location').after("<button class = 'btn btn-default'>CURRENT LOCATION</button>")
 	// 	})
 
 
-})
+//})

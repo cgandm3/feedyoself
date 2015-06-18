@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'searches/home'
   get 'searches/index'
 
-  get 'searches/new'
+  get 'searches/new' => "searches#new", as: :searches
 
   get 'searches/create'
 

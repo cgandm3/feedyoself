@@ -13,6 +13,16 @@
 <% @restaurantName = place["name"].upcase %>
 <% end %>
 
+<%= form_for @search do %>
+  <%= label_tag :cusine, 'Cuisine:' %>
+  <%= text_field :cuisine %>
+  <%= label_tag :location, 'Location:' %>
+  <%= text_field :location %>
+  <%= label_tag :price, 'Price:' %>
+  <%= text_field :price %>
+  <%= submit_tag "GET FED UP" %>
+<% end %>
+
 	<form class="form-inline">
 	<div class="form-group">
 		<label class="cuisine">Cuisine:</label>

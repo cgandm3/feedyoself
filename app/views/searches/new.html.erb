@@ -13,26 +13,32 @@
 <% @restaurantName = place["name"].upcase %>
 <% end %>
 
+<div class = "search">
+
 <%= form_for @search, :html => {:class => "form-inline"} do |f| %>
-<div class="form-group">
-  <%= f.label :cuisine, 'Cuisine:' %>
-  <%= f.text_field :cuisine, class: "form-control", placeholder: "Food type" %>
-</div>
-<div class="form-group">
-  <%= f.label :location, 'Location:' %>
-  <%= f.text_field :location, class: "form-control", placeholder: "City or Zipcode" %>
-</div>
-<button type="submit" class="fa fa-location-arrow"></button>
-<div class="form-group">
-  <%= f.label :price, 'Price:' %> <strong>$</strong>
-  <%= f.text_field :price, class: "form-control", placeholder: "10.50" %>
-</div>
-  <%= f.submit "GET FED UP", class: "btn btn-default" %>
+	<div class="form-group">
+		  <%= f.label :cuisine, 'Cuisine' %>
+		  <%= f.text_field :cuisine, class: "form-control", placeholder: "Food type" %>
+	</div>
+	<div class="form-group">
+		  <%= f.label :location, 'Location' %>
+		  <%= f.text_field :location, class: "form-control", placeholder: "City, Zipcode or Selection Your Current Location" %>
+<!-- 		<button type="submit" class="fa fa-location-arrow"></button>
+ -->	</div>
+	<div class="form-group">
+		  <%= f.label :price, 'Price:' %> <strong>$</strong>
+		  <%= f.text_field :price, class: "form-control", placeholder: "10.50" %>
+	</div>
+	  <%= f.submit "GET FED UP", class: "btn btn-default" %>
+	
+
 <% end %>
 
-	<div id="map">
-	</div>
-</div>
+</div> <!-- closing .search div  -->
+
+<div class= "empty"></div> 
+
+<div id="map"></div>
 
 <!-- in-view JS to utilize ruby variables created to pull proper map -->
 

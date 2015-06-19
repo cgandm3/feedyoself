@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'searches#new'
 
-  get 'searches/home'
-  get 'searches/index'
 
   get 'searches/new' => "searches#new", as: :searches
 
   get 'searches/create'
+  get 'searches/index'
 
   get 'searches/show'
+  root "searches#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

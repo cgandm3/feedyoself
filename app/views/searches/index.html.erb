@@ -23,26 +23,31 @@
   <%= submit_tag "GET FED UP" %>
 <% end %>
 
-	<form class="form-inline">
+<div class = "search">
+
+<%= form_for @search, :html => {:class => "form-inline"} do |f| %>
 	<div class="form-group">
-		<label class="cuisine">Cuisine:</label>
-		<input type="text" class="form-control" id="exampleInputName2" placeholder="enter your dish">
+		  <%= f.label :cuisine, 'Cuisine' %>
+		  <%= f.text_field :cuisine, class: "form-control", placeholder: "Food type" %>
 	</div>
 	<div class="form-group">
-		<label class="location">Location:</label>
-		<input type="email" class="form-control" id="location" placeholder=" 90021 or Santa Monica">
-	</div>
-	<button type="submit" class="fa fa-location-arrow"></button>
-	<span></span>
+		  <%= f.label :location, 'Location' %>
+		  <%= f.text_field :location, class: "form-control", placeholder: "City, Zipcode or Selection Your Current Location" %>
+<!-- 		<button type="submit" class="fa fa-location-arrow"></button>
+ -->	</div>
 	<div class="form-group">
-		<label class="price">Price: $</label>
-		<input type="email" class="form-control" id="price" placeholder="10.50">
+		  <%= f.label :price, 'Price:' %> <strong>$</strong>
+		  <%= f.text_field :price, class: "form-control", placeholder: "10.50" %>
 	</div>
-	<button type="submit" class="btn btn-default">GET FED UP</button>
-</form>
-	<div id="map">
-	</div>
-</div>
+	  <%= f.submit "GET FED UP", class: "btn btn-default" %>
+	
+
+<% end %>
+</div> <!-- closing .search div  -->
+
+<div class= "empty"></div> 
+
+<div id="map" class="img-responsive" alt="Responsive image"></div>
 
 <!-- in-view JS to utilize ruby variables created to pull proper map -->
 

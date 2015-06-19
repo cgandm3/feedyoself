@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'searches#new'
+
   get 'searches/home'
   get 'searches/index'
 

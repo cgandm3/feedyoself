@@ -30,7 +30,7 @@ $(window).load(function() { //start after HTML, images have loaded
             var itemInterval = 10000;
  
             //cross-fade time (in milliseconds)
-            var fadeTime = 5000;
+            var fadeTime = 0;
  
             //count number of items
             var numberOfItems = $('.rotating-item').length;

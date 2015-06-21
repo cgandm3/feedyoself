@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-  get 'searches/new' => "searches#new", as: :searches
-
-  get 'searches/create'
-  get 'searches/index'
-
-  get 'searches/show'
+  resources :searches
   root "searches#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,6 @@
 
 
-<% search = Geocoder.search(request.remote_ip) %>
+<% search = Geocoder.search("90401") %>
 <!-- request.remote_ip -->
 <% latitude = search[0].latitude %>
 <% longitude = search[0].longitude %>
@@ -14,6 +14,7 @@
 <% end %>
 
 <div class = "search">
+  <%= Search.last %>
 
 <%= form_for @search, :html => {:class => "form-inline"} do |f| %>
 	<div class="form-group">
@@ -30,13 +31,13 @@
 		  <%= f.text_field :price, class: "form-control", placeholder: "10.50" %>
 	</div>
 	  <%= f.submit "GET FED UP", class: "btn btn-default" %>
-	
+
 
 <% end %>
 
 </div> <!-- closing .search div  -->
 
-<div class= "empty"></div> 
+<div class= "empty"></div>
 <div id="rotating-image">
 	<li class = "rotating-item"><%= image_tag "burger.jpg"%></li>
 	<li class = "rotating-item"><%= image_tag "chinese.jpg" %></li>

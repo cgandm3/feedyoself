@@ -48,7 +48,7 @@
 	<li class = "rotating-item"><%= image_tag "taco.jpg"%></li>
  </div>
 
-<!-- <div id="map"></div> -->
+<div id="map"></div>
 
 <!-- in-view JS to utilize ruby variables created to pull proper map -->
 
@@ -96,7 +96,7 @@
   		      mapTypeId:google.maps.MapTypeId.ROAD
   		    };
 
-  		    var map = new google.maps.Map(document.getElementById("rotating-image"),mapProp);
+  		    var map = new google.maps.Map(document.getElementById("map"),mapProp);
 
           var marker2=new google.maps.Marker({
           	position:myCenter,

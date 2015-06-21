@@ -59,3 +59,10 @@ $(window).load(function() { //start after HTML, images have loaded
     InfiniteRotator.init();
  
 });
+
+$(document).ready(function(){
+    $(".btn-default").click(function(){
+        $('#rotating-image').hide();
+        $('#map').fadeIn('fast');
+    });
+})

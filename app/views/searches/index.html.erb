@@ -5,7 +5,7 @@
 </div>
 
 <!-- setting latitude/longitude variables to be used in API call -->
-
+<span id="results">
 <% latitude = Search.last.latitude %>
 <% longitude = Search.last.longitude %>
 <% response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
@@ -13,11 +13,25 @@
 <% response["objects"].sample(1).each do |place| %>
   <% @placeLat = place["lat"]
   @placeLong = place["long"] %>
+  <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
   <% @restaurantName = place["name"].upcase %>
 <% end %>
 
 <div class = "search">
 
+<% @menu["objects"][0]["menus"][0]["sections"].each do |section| %>
+
+<% @possibleItems = Hash.new %>
+
+<% section["subsections"][0]["contents"].each do |item| %>
+<% if (item["price"].to_i < Search.last.price.to_i && item["price"].to_i > 0) %>
+<% @possibleItems.merge!(name: item["name"], price: item["price"]) %>
+<span style="text-decoration: underline;"><%= item["name"] %></span>: $<%= item["price"]%> <br><br>
+<% end %>
+<% end %>
+
+<% end %>
+</span>
   <form class="form-inline">
     	<div class="form-group">
     		<label class="cuisine">Cuisine:</label>

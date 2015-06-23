@@ -1,6 +1,7 @@
+// adding an onclick to submit ID
+
 $(document).ready(function(){
 $("#submit").click(function(){
-  console.log("hello");
   getLocation();
 });
 });
@@ -13,19 +14,16 @@ var x = document.getElementById("demo");
 // is available
 
 function getLocation() {
-    console.log("HI");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
-    console.log("hi again");
 }
 
 // if geolocation is available, runs showPosition function
 
 function showPosition(position) {
-    console.log("showPosition");
 
 // grabbing input values and location values to be used in ajax post for new search item
 
@@ -37,6 +35,11 @@ function showPosition(position) {
     var placeLatitude = document.getElementById("latitude").innerText;
     var restaurantName = document.getElementById("restaurantName").innerText;
     var placeZip = document.getElementById("postalCode").innerText;
+
+    console.log(y);
+    console.log(userLongitude);
+    console.log(placeLatitude);
+    console.log(placeZip);
 
     var bounds = new google.maps.LatLngBounds();
 
@@ -89,7 +92,8 @@ function showPosition(position) {
 
 // finally calling ajax function to post data to new search object
 
-        ajax(y,z,userLatitude,userLongitude,postalCode);
+        ajax(y,z,userLatitude,userLongitude,placeZip);
+
 }
 
 // ajax function to post input data to new search object to be accessible by rails
@@ -103,6 +107,5 @@ function ajax(price,cuisine,lat,long,zip){
     data: { search: {cuisine: cuisine, price: price, latitude: lat, longitude: long, location: zip}},
   });
 
-  console.log("hello ajax");
 
 }

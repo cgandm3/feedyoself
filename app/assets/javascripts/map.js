@@ -1,4 +1,11 @@
-document.getElementById("submit").addEventListener('click', getLocation);
+$(document).ready(function(){
+$("#submit").click(function(){
+  console.log("hello");
+  getLocation();
+});
+});
+
+// document.getElementById("submit").addEventListener('click', getLocation);
 
 var x = document.getElementById("demo");
 
@@ -6,17 +13,19 @@ var x = document.getElementById("demo");
 // is available
 
 function getLocation() {
-
+    console.log("HI");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
+    console.log("hi again");
 }
 
 // if geolocation is available, runs showPosition function
 
 function showPosition(position) {
+    console.log("showPosition");
 
 // grabbing input values and location values to be used in ajax post for new search item
 
@@ -24,9 +33,10 @@ function showPosition(position) {
     var z = document.getElementById("exampleInputName2").value;
     var userLongitude = position.coords.longitude;
     var userLatitude = position.coords.latitude;
-    var placeLongitude = document.getElementById("longitude").text;
-    var placeLatitude = document.getElementById("latitude").text;
-    var restaurantName = document.getElementById("restaurantName").text;
+    var placeLongitude = document.getElementById("longitude").innerText;
+    var placeLatitude = document.getElementById("latitude").innerText;
+    var restaurantName = document.getElementById("restaurantName").innerText;
+    var placeZip = document.getElementById("postalCode").innerText;
 
     var bounds = new google.maps.LatLngBounds();
 
@@ -79,20 +89,20 @@ function showPosition(position) {
 
 // finally calling ajax function to post data to new search object
 
-        ajax(y,z,userLatitude,userLongitude);
+        ajax(y,z,userLatitude,userLongitude,postalCode);
 }
 
 // ajax function to post input data to new search object to be accessible by rails
 
-function ajax(price,cuisine,lat,long){
+function ajax(price,cuisine,lat,long,zip){
 
   $.ajax({
     type: "POST",
     url: "/searches",
     dataType: 'json',
-    data: { search: {cuisine: cuisine, price: price, latitude: lat, longitude: long}},
+    data: { search: {cuisine: cuisine, price: price, latitude: lat, longitude: long, location: zip}},
   });
 
-  $('#results').load(document.URL +  ' #results');
+  console.log("hello ajax");
 
 }

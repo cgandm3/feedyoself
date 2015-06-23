@@ -11,20 +11,26 @@
 <% response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
 
 <% response["objects"].sample(1).each do |place| %>
-  <% @placeLat = place["lat"]
-  @placeLong = place["long"] %>
+  <%
+  @placeLat = place["lat"]
+  @placeLong = place["long"]
+  @placeZip = place["postal_code"]
+  %>
   <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
   <% @restaurantName = place["name"].upcase %>
 <% end %>
-<span id="restaurantName">
-  <%= @restaurantName %>
-</span>
-<span id="latitude">
-  <%= latitude %>
-</span>
-<span id="longitude">
-  <%= longitude %>
-</span>
+  <span id="restaurantName">
+    <%= @restaurantName %>
+  </span>
+  <span id="latitude">
+    <%= @placeLat %>
+  </span>
+  <span id="longitude">
+    <%= @placeLong %>
+  </span>
+  <span id="postalCode">
+    <%= @placeZip %>
+  </span>
 
 <div class = "search">
   <% @possibleItems = [] %>

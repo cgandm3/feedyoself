@@ -112,8 +112,22 @@
 
   		    var map = new google.maps.Map(document.getElementById("map"),mapProp);
 
+          var infowindow =  new google.maps.InfoWindow({
+            content: 'Hello World!',
+            map: map
+          });
+
           var marker2=new google.maps.Marker({
           	position:myCenter,
+          });
+
+          
+          google.maps.event.addListener(marker, 'mouseover', function() {
+            infowindow.open(map, this);
+          });
+
+          google.maps.event.addListener(marker, 'mouseout', function() {
+            infowindow.close();
           });
 
         	marker2.setMap(map);

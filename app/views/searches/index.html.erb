@@ -77,14 +77,8 @@
 </div> <!-- closing .search div  -->
 
 <div class= "empty"></div>
-<div id="rotating-image">
-	<li class = "rotating-item"><%= image_tag "burger.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "chinese.jpg" %></li>
-	<li class = "rotating-item"><%= image_tag "pizza.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "ramen.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "roasted_chicken.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "salad.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "taco.jpg"%></li>
- </div>
+<div class="images">
+<%= render "galleries" %>
+</div>
 
 <div id="map"></div>

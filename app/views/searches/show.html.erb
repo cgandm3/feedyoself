@@ -68,26 +68,33 @@
 <h2 class="menuItem" style="display:none"><%= @randomItem[i].first[:name] %> : $<%= @randomItem[i].first[:price] %></h2>
 <% end %>
 </span>
+<div class = "empty">
+</div>
+
 <div class = "search">
   <form class="form-inline">
-    	<div class="form-group">
-    		<label class="cuisine">Cuisine:</label>
-    		<input type="text" class="form-control" id="exampleInputName2" placeholder="enter your dish" >
-    	</div>
-  	<!-- <div class="form-group">
-  		<label class="location">Location:</label>
-  		<input type="email" class="form-control" id="location" placeholder=" 90021 or Santa Monica">
-  	</div> -->
-  	<!-- <button type="submit" class="fa fa-location-arrow"></button> -->
-    	<div class="form-group">
-    		<label class="price">Price: $</label>
-    		<input type="text" class="form-control" id="price" placeholder="10.50" >
-    	</div>
-    	<a href="/searches/show"><button id="submit" type="button" class="btn btn-default">GET FED UP</button></a>
+      <div class="form-group">
+        <label class="cuisine">Cuisine:</label>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder="enter your dish">
+      </div>
+    <!-- <div class="form-group">
+      <label class="location">Location:</label>
+      <input type="email" class="form-control" id="location" placeholder=" 90021 or Santa Monica">
+    </div> -->
+    <!-- <button type="submit" class="fa fa-location-arrow"></button> -->
+      <div class="form-group">
+        <label class="price">Price: $</label>
+        <input type="text" class="form-control" id="price" placeholder="10.50">
+      </div>
+      <div class = "form-group">
+            <a href="/searches/show"><button id="submit" type="button" class="btn btn-default">GET FED UP</button></a>
+      </div>
+      
     </form>
-    <button id="more_items" type="button">MORE FOOD/DRINK OPTIONS</button><br>
 
 </div> <!-- closing .search div  -->
+
+    <button id="more_items" type="button">MORE FOOD/DRINK OPTIONS</button><br>
 
 <div id="map"></div>
 

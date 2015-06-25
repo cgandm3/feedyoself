@@ -143,13 +143,11 @@ img {
     filter: alpha(opacity=80);
 }
 
-.map-box {
-    width: 100%;
-}
+
 
 #map {
   width: 80%;
-
+  height: 700px;
   border-radius: 10px;
   margin: 5% auto;
   padding-right: 2%;

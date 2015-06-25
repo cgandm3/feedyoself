@@ -8,34 +8,27 @@
 <span id="results">
   <% latitude = Search.last.latitude %>
   <% longitude = Search.last.longitude %>
-  <% response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
+  <% response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=7a3583e12a33f7edc1b626c5fdbba42a266d11c4" %>
+  <% @placeLat = []
+    @placeLong = []
+    @placeZip = []
+    @restaurantName = []
+    @randomItem = []
+%>
+ <!-- Until there are possible items from particular restaurant lower than input count, look for another restaurant   -->
 
+<% for i in 0..2 %>
+<% @possibleItems = [] %>
+  <% until @possibleItems.length > 0 do %>
   <% response["objects"].sample(1).each do |place| %>
     <%
-    @placeLat = place["lat"]
-    @placeLong = place["long"]
-    @placeZip = place["postal_code"]
+    @placeLat << place["lat"]
+    @placeLong << place["long"]
+    @placeZip << place["postal_code"]
     %>
-    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
-    <% @restaurantName = place["name"].upcase %>
+    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=7a3583e12a33f7edc1b626c5fdbba42a266d11c4" %>
+    <% @restaurantName << place["name"].upcase %>
   <% end %>
-
-<!-- hidden spans holding data to be accessed via map.js -->
-
-  <span id="restaurantName">
-    <%= @restaurantName %>
-  </span>
-  <span id="latitude">
-    <%= @placeLat %>
-  </span>
-  <span id="longitude">
-    <%= @placeLong %>
-  </span>
-  <span id="postalCode">
-    <%= @placeZip %>
-  </span>
-
-  <% @possibleItems = [] %>
 
   <% @menu["objects"][0]["menus"][0]["sections"].each do |section| %>
 
@@ -49,17 +42,31 @@
 
 <% end %>
 
-<%= @possibleItems %>
-<% @randomItem = @possibleItems.sample(1) %>
-<%= @randomItem %>
-<h2><%= @randomItem.first[:name] %> : <%= @randomItem.first[:price] %></h2>
+<% end %>
 
+<!-- hidden spans holding data to be accessed via map.js -->
+
+  <span class="restaurantName">
+    <%= @restaurantName[i] %>
+  </span>
+  <span class="latitude">
+    <%= @placeLat[i] %>
+  </span>
+  <span class="longitude">
+    <%= @placeLong[i] %>
+  </span>
+  <span class="postalCode">
+    <%= @placeZip[i] %>
+  </span>
+<% @randomItem << @possibleItems.sample(1) %>
+<h2 class="menuItem" style="display:none"><%= @randomItem[i].first[:name] %> : $<%= @randomItem[i].first[:price] %></h2>
+<% end %>
 </span>
 <div class = "search">
   <form class="form-inline">
     	<div class="form-group">
     		<label class="cuisine">Cuisine:</label>
-    		<input type="text" class="form-control" id="exampleInputName2" placeholder="enter your dish">
+    		<input type="text" class="form-control" id="exampleInputName2" placeholder="enter your dish" >
     	</div>
   	<!-- <div class="form-group">
   		<label class="location">Location:</label>
@@ -68,9 +75,9 @@
   	<!-- <button type="submit" class="fa fa-location-arrow"></button> -->
     	<div class="form-group">
     		<label class="price">Price: $</label>
-    		<input type="text" class="form-control" id="price" placeholder="10.50">
+    		<input type="text" class="form-control" id="price" placeholder="10.50" >
     	</div>
-    	<button id="submit" type="button" class="btn btn-default">GET FED UP</button>
+    	<a href="/searches/show"><button id="submit" type="button" class="btn btn-default">GET FED UP</button></a>
     </form>
 
 </div> <!-- closing .search div  -->

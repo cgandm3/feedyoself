@@ -3,60 +3,6 @@
 <div id ="demo">
 </div>
 
-<!-- setting latitude/longitude variables to be used in API call -->
-
-  <% latitude = Search.last.latitude %>
-  <% longitude = Search.last.longitude %>
-  <%# raise longitude.inspect %>
-  <% response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
-
-  <% response["objects"].sample(1).each do |place| %>
-    <%
-    @placeLat = place["lat"]
-    @placeLong = place["long"]
-    @placeZip = place["postal_code"]
-    %>
-    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
-    <% @restaurantName = place["name"].upcase %>
-  <% end %>
-
-<span id="results">
-<!-- hidden spans holding data to be accessed via map.js -->
-
-  <span id="restaurantName">
-    <%= @restaurantName %>
-  </span>
-  <span id="latitude">
-    <%= @placeLat %>
-  </span>
-  <span id="longitude">
-    <%= @placeLong %>
-  </span>
-  <span id="postalCode">
-    <%= @placeZip %>
-  </span>
-
-  <% @possibleItems = [] %>
-
-  <% @menu["objects"][0]["menus"][0]["sections"].each do |section| %>
-
-    <% section["subsections"][0]["contents"].each do |item| %>
-
-      <% if (item["price"].to_i < Search.last.price.to_i && item["price"].to_i > 0) %>
-        <% @possibleItems << {name: item["name"], price: item["price"]} %>
-      <% end %>
-
-    <% end %>
-
-<% end %>
-
-<%= @possibleItems %>
-<% @randomItem = @possibleItems.sample(1) %>
-<%= @randomItem %>
-<h2><%= @randomItem.first[:name] %> : <%= @randomItem.first[:price] %></h2>
-
-</span>
-
 <div class = "search">
   <form class="form-inline">
     	<div class="form-group">
@@ -72,20 +18,19 @@
     		<label class="price">Price: $</label>
     		<input type="text" class="form-control" id="price" placeholder="10.50">
     	</div>
-    	<button id="submit" type="button" class="btn btn-default">GET FED UP</button>
+    	<a href="/searches/show"><button id="submit" type="button" class="btn btn-default">GET FED UP</button></a>
     </form>
 
 </div> <!-- closing .search div  -->
 
 <div class= "empty"></div>
-<div id="rotating-image">
-	<li class = "rotating-item"><%= image_tag "burger.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "chinese.jpg" %></li>
-	<li class = "rotating-item"><%= image_tag "pizza.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "ramen.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "roasted_chicken.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "salad.jpg"%></li>
-	<li class = "rotating-item"><%= image_tag "taco.jpg"%></li>
- </div>
+<div class="images">
+<%= render "galleries" %>
+</div>
 
-<div id="map"></div>
+
+
+
+
+
+<!-- <div id="map"></div> -->

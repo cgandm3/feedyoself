@@ -38,20 +38,20 @@ require 'rails_helper'
 			end
 		end
 
-		describe "POST create" do
-			before :each do
-				get :new
-			end
-			describe "with valid params" do
-				it "creates a new Search" do
-					expect { post :create, {:search => valid_attributes}}.to change(Search, :count).by(1)
-				end	
-				it "assigns a new search to @search" do
-					post :create, {:search => valid_attributes}
-					expect(assigns(:search)).to be_a(Search)
-				end
-			end
-		end
+		# describe "POST create" do
+		# 	before :each do
+		# 		get :new
+		# 	end
+		# 	describe "with valid params" do
+		# 		it "creates a new Search" do
+		# 			expect { post :create, {:search => valid_attributes}}.to change(Search, :count).by(1)
+		# 		end	
+		# 		it "assigns a new search to @search" do
+		# 			post :create, {:search => valid_attributes}
+		# 			expect(assigns(:search)).to be_a(Search)
+		# 		end
+		# 	end
+		# end
 	end
 
 

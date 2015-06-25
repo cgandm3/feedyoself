@@ -1,0 +1,34 @@
+
+<!-- hidden spans holding data to be accessed via map.js -->
+
+  <span id="restaurantName">
+    <%= @restaurantName %>
+  </span>
+  <span id="latitude">
+    <%= @placeLat %>
+  </span>
+  <span id="longitude">
+    <%= @placeLong %>
+  </span>
+  <span id="postalCode">
+    <%= @placeZip %>
+  </span>
+
+  <% @possibleItems = [] %>
+
+  <% @menu["objects"][0]["menus"][0]["sections"].each do |section| %>
+
+    <% section["subsections"][0]["contents"].each do |item| %>
+
+      <% if (item["price"].to_i < Search.last.price.to_i && item["price"].to_i > 0) %>
+        <% @possibleItems << {name: item["name"], price: item["price"]} %>
+      <% end %>
+
+    <% end %>
+
+<% end %>
+
+<%= @possibleItems %>
+<% @randomItem = @possibleItems.sample(1) %>
+<%= @randomItem %>
+<h2><%= @randomItem.first[:name] %> : <%= @randomItem.first[:price] %></h2>

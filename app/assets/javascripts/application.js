@@ -66,3 +66,9 @@ $(document).ready(function(){
         $('#map').fadeIn('fast');
     });
 });
+
+$(document).ready(function(){
+    $("#more_items").click(function(){
+        $('.more-items').slideToggle("slow");
+    });
+});

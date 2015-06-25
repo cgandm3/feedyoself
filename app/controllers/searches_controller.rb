@@ -23,14 +23,15 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.new(params.require(:search).permit(:location, :cuisine, :price, :latitude, :longitude))
-    @search.save
+    #@search.save
+    raise @search.inspect
 
     if @search.save
-    render searches_path
-  end
+      render searches_path
+    end
   end
 
-  def show
+  def about
   end
 
 end

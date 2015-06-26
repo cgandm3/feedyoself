@@ -5,11 +5,11 @@ var cuisines = []
 $(document).ready(function(){
     $("#submit").click(function(){
       prices.push(document.getElementById("price").value);
-      cuisines.push(document.getElementById("exampleInputName2").value);
+      // cuisines.push(document.getElementById("exampleInputName2").value);
       getLocation();
     });
     prices.push(document.getElementById("price").value);
-    cuisines.push(document.getElementById("exampleInputName2").value);
+    // cuisines.push(document.getElementById("exampleInputName2").value);
     reloadLocation();
 });
 

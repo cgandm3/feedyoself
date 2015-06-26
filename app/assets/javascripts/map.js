@@ -115,15 +115,15 @@ function showPositionAgain(position) {
           position:myCenter,
         });
 
-        marker2.setIcon('http://www.thatscoop.com/app/webroot/img/emoticons/happy.png')
+        marker2.setIcon('http://www.thatscoop.com/app/webroot/img/emoticons/happy.png');
 
         marker2.setMap(map);
 
-        var infowindow = new google.maps.InfoWindow({
-              content: "ITS YOU"
-            });
-
-            infowindow.open(map,marker2);
+        // var infowindow = new google.maps.InfoWindow({
+        //       content: "ITS YOU"
+        //     });
+        //
+        //     infowindow.open(map,marker2);
 
     for(var i = 0; i < 3; i++){
         var menuItem = document.getElementsByClassName("menuItem")[i].innerText;
@@ -143,14 +143,24 @@ function showPositionAgain(position) {
 
         // google.maps.event.addListener(marker, 'click', function(){});
 
-        var contentString = '<h5>' + restaurantName + '</h5>' + '<p>' + menuItem + '</p>';
+        var contentString = '<div id="mapWindow"><h5>' + restaurantName + '</h5>' + '<p>' + menuItem + '</p></div>';
 
         var infowindow = new google.maps.InfoWindow({
               content: contentString
             });
 
+    //         google.maps.event.addListener(marker, 'mouseover', function() {
+    //     infowindow.open(map, this);
+    // });
+    //
+    // // assuming you also want to hide the infowindow when user mouses-out
+    // google.maps.event.addListener(marker, 'mouseout', function() {
+    //     infowindow.close();
+    // });
+
             infowindow.open(map,marker);
       }
+
 
 // extending the bounds of the map to show both current location and restaraunt
         bounds.extend(marker2.position);

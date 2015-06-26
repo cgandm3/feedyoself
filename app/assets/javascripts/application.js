@@ -65,12 +65,8 @@ $(document).ready(function(){
         $('#rotating-image').hide();
         $('#map').fadeIn('fast');
     });
-});
-
-$(document).ready(function(){
     $("#more_items").click(function(){
         $('.search').toggle("slow");
         $('.more-items').slideToggle("fast");
     });
 });
-

@@ -17,7 +17,7 @@
       @placeLocality << place["locality"]
       @restaurantName << place["name"].upcase
     %>
-    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
+    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=1a6cfffb78fb611346b96a78087079c36173d8fa" %>
 
   <% end %>
 

@@ -69,6 +69,8 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#more_items").click(function(){
-        $('.more-items').slideToggle("slow");
+        $('.search').toggle("slow");
+        $('.more-items').slideToggle("fast");
     });
 });
+

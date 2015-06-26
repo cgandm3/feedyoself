@@ -153,6 +153,7 @@ img {
   background-image: image-url('loading.gif');
   background-size: cover;
 }
+
 .restaurantName {
   display: none;
 }
@@ -217,15 +218,18 @@ hr {
 .img1 {
     width: 100%;
 }
-.more-items {
-  width: 33%;
-  background-color: white;
-  padding-bottom: 10px;
-  font-size: 10px;
-  display: inline-block;
-  margin-top: 50px;
+
+
+div.more-items {
+  margin: 15% auto;
+  font-size: 15px;
   text-align: center;
+  color: white;
+  border-radius: 5%;
+  width: 90%;
+
 }
+
 
 .close {
     color: white;
@@ -253,3 +257,13 @@ hr {
 #more_items {
     margin: 0 auto;
 }
+
+.menu_item {
+    color: #00688B;
+    text-align: center;
+}
+
+/*.empty2 {
+    width: 100%;
+    height: 50px;
+}*/

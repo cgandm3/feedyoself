@@ -10,6 +10,26 @@ $bgHighlight : #F6F6F6;
 $colDefault     : black;
 $colHighlight   : white;
 
+* {
+font-family: 'Raleway', sans-serif;
+font-weight: bold;
+}
+
+a.fa.fa-users {
+  font-family: 'Raleway', sans-serif;
+}
+
+a.fa.fa-camera {
+  font-family: 'Raleway', sans-serif;
+}
+
+a.fa.fa-home {
+  font-family: 'Raleway', sans-serif;
+}
+
+button#more_items {
+  font-family: 'Raleway', sans-serif;
+}
 
 .navbar-default {
     background-color: #B0E2FF;
@@ -96,9 +116,11 @@ body {
 input#price.form-control, button#submit.btn.btn-default {
     height: 100px;
     width: 250px;
-    font-size: 24px;
+    font-size: 29px;
     text-align: center;
     margin: 5px auto;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
 }
 
 
@@ -274,7 +296,8 @@ div.more-items {
     text-align: center;
 }
 #mapWindow h5{
-  color: #B0E2FF;
+  color: #00688B;
+  font-weight: bold;
   font-size: 12px;
 }
 #mapWindow p{

@@ -1,6 +1,7 @@
 var prices = []
 var cuisines = []
 
+
 $(document).ready(function(){
     $("#submit").click(function(){
       prices.push(document.getElementById("price").value);
@@ -40,7 +41,7 @@ function showPosition(position) {
 // finally calling ajax function to post data to new search object
 
         ajax(y,z,userLatitude,userLongitude);
-        window.location.assign("/searches/show")
+        window.location.assign("/searches/show");
           // location.reload(true);
 
 
@@ -139,6 +140,8 @@ function showPositionAgain(position) {
         marker.setMap(map);
         bounds.extend(marker.position);
 
+        // google.maps.event.addListener(marker, 'click', function(){});
+
         var contentString = '<h5>' + restaurantName + '</h5>' + '<p>' + menuItem + '</p>';
 
         var infowindow = new google.maps.InfoWindow({
@@ -152,6 +155,8 @@ function showPositionAgain(position) {
         bounds.extend(marker2.position);
 
         map.fitBounds(bounds);
+
+        $("#map").css({'background':'white'});
 
 
 

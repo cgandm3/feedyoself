@@ -143,14 +143,15 @@ img {
     filter: alpha(opacity=80);
 }
 
-
-
 #map {
+  position: relative;
   width: 90%;
-  height: 350px;
+  padding-bottom: 90%;
   border-radius: 10px;
   margin: 2% auto;
   padding-right: 2%;
+  background-image: image-url('loading.gif');
+  background-size: cover;
 }
 .restaurantName {
   display: none;

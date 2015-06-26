@@ -35,7 +35,7 @@ class SearchesController < ApplicationController
 
     latitude = Search.last.latitude
     longitude = Search.last.longitude
-    @response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=43a26b029716119b7d3247daacc3a29ed3151656"
+    @response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=1a6cfffb78fb611346b96a78087079c36173d8fa"
     @placeLat = []
     @placeLong = []
     @placeLocality = []

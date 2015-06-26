@@ -78,18 +78,27 @@ body {
 
 }
 
-.form-inline {
+.form-horizontal {
     width: 100%;
-    height: 50px;
+    height: 100px;
     margin: 0 auto;
     padding-left: 10%;
     padding-right: 10%;
     color: #00688B;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial;
     font-size: 18px;
     opacity: 1;
     filter: alpha(opacity=60);
     border-radius: 5px;
+}
+
+
+input#price.form-control, button#submit.btn.btn-default {
+    height: 100px;
+    width: 250px;
+    font-size: 24px;
+    text-align: center;
+    margin: 5px auto;
 }
 
 
@@ -104,11 +113,14 @@ body {
     margin-top: 2%;
 }*/
 
+
+
 .btn-default {
     background-color: #00688B;
     border-color: #00688B;
     height: 34px;
     color: white;
+    font-family: Lato;
 }
 
 .btn-default:hover {
@@ -221,7 +233,7 @@ hr {
 
 
 div.more-items {
-  margin: 15% auto;
+  margin: 10% auto;
   font-size: 15px;
   text-align: center;
   color: white;
@@ -250,7 +262,6 @@ div.more-items {
 .more_options {
     width: 100%;
     height: 50px;
-    margin-top: 5%;
     text-align: center;
 }
 

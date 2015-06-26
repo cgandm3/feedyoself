@@ -37,11 +37,13 @@ function showPosition(position) {
     var z = cuisines[cuisines.length -1];
     var userLongitude = position.coords.longitude;
     var userLatitude = position.coords.latitude;
+    // var placeLocality = document.getElementsByClassName("postalCode")[0].innerText;
 
 // finally calling ajax function to post data to new search object
 
         ajax(y,z,userLatitude,userLongitude);
         window.location.assign("/searches/show");
+
           // location.reload(true);
 
 
@@ -57,7 +59,6 @@ function ajax(price,cuisine,lat,long){
     dataType: 'json',
     data: { search: {cuisine: cuisine, price: price, latitude: lat, longitude: long}},
   });
-
 
 }
 

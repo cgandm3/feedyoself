@@ -14,10 +14,10 @@
     <%
       @placeLat << place["lat"]
       @placeLong << place["long"]
-      @placeZip << place["postal_code"]
+      @placeLocality << place["locality"]
       @restaurantName << place["name"].upcase
     %>
-    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=7a3583e12a33f7edc1b626c5fdbba42a266d11c4" %>
+    <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=43a26b029716119b7d3247daacc3a29ed3151656" %>
   <% end %>
 
   <% @menu["objects"][0]["menus"][0]["sections"].each do |section| %>
@@ -39,7 +39,7 @@
   <span class="restaurantName"><%= @restaurantName[i] %></span>
   <span class="latitude"><%= @placeLat[i] %></span>
   <span class="longitude"><%= @placeLong[i] %></span>
-  <span class="postalCode"><%= @placeZip[i] %></span>
+  <span class="postalCode"><%= @placeLocality[i] %></span>
 
   <span class='more-items' style="display:none">
     <h4><%= @restaurantName[i] %></h4>
@@ -76,7 +76,9 @@
         <input type="text" class="form-control" id="price" placeholder="10.50">
       </div>
       <div class = "form-group">
-            <a href="/searches/show"><button id="submit" type="button" class="btn btn-default">GET FED UP</button></a>
+            <a href="/searches/show">
+              <button id="submit" type="button" class="btn btn-default">GET FED UP</button>
+              </a>
       </div>
 
     </form>

@@ -24,11 +24,24 @@ class SearchesController < ApplicationController
   def create
     @search = Search.new(params.require(:search).permit(:location, :cuisine, :price, :latitude, :longitude))
     @search.save
-    raise @search.inspect
+    # raise @search.inspect
 
     if @search.save
       render searches_path
     end
+  end
+
+  def show
+
+    latitude = Search.last.latitude
+    longitude = Search.last.longitude
+    @response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=7a3583e12a33f7edc1b626c5fdbba42a266d11c4"
+    @placeLat = []
+    @placeLong = []
+    @placeZip = []
+    @restaurantName = []
+    @randomItem = []
+
   end
 
   def about

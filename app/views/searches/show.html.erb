@@ -58,16 +58,22 @@
   <span class="postalCode">
     <%= @placeZip[i] %>
   </span>
-  <span class="more-items" style="display:none;">
-    <h4><%= @restaurantName[i] %></h4>
-    <% @possibleItems.each do |item| %>
-    <%= item[:name] %> : $<%= item[:price] %><br>
-    <% end %>
-  </span>
+
+
+
+      <span class='more-items' style="display:none"><h4><%= @restaurantName[i] %></h4>
+      <% @possibleItems.each do |item| %>
+      <%= item[:name] %> : $<%= item[:price] %><br>
+      <% end %></span>
+
+
 <% @randomItem << @possibleItems.sample(1) %>
 <h2 class="menuItem" style="display:none"><%= @randomItem[i].first[:name] %> : $<%= @randomItem[i].first[:price] %></h2>
+
 <% end %>
 </span>
+
+
 <div class = "empty">
 </div>
 
@@ -95,7 +101,7 @@
 </div> <!-- closing .search div  -->
 
 <div class = "more_options">
-    <button id="more_items" type="button" class = "btn btn-default">MORE FOOD/DRINK OPTIONS</button><br>
+    <button type="button" class = "btn btn-default" id = "more_items">MORE FOOD/DRINK OPTIONS</button><br>
 </div>
 
 <div id="map"></div>

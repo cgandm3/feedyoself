@@ -59,13 +59,17 @@
     <%= @placeZip[i] %>
   </span>
 
+   
+      <div class='more-items containter' style="display:none">
+        <div class = "col-md-4">
+          <h5><%= @restaurantName[i] %></h4>
+          <% @possibleItems.each do |item| %>
+          <%= item[:name] %> : $<%= item[:price] %><br>
+          <% end %>
+        </div>
+      </div>
 
-
-      <span class='more-items' style="display:none"><h4><%= @restaurantName[i] %></h4>
-      <% @possibleItems.each do |item| %>
-      <%= item[:name] %> : $<%= item[:price] %><br>
-      <% end %></span>
-
+  
 
 <% @randomItem << @possibleItems.sample(1) %>
 <h2 class="menuItem" style="display:none"><%= @randomItem[i].first[:name] %> : $<%= @randomItem[i].first[:price] %></h2>

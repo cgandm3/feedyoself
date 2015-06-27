@@ -16,7 +16,11 @@
       @placeLong << place["long"]
       @placeLocality << place["locality"]
       @restaurantName << place["name"].upcase
-    %>
+      @address << place["street_address"]
+      @phoneNumber << place["phone"]
+     %>
+
+      </address>
     <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=1a6cfffb78fb611346b96a78087079c36173d8fa" %>
 
   <% end %>
@@ -41,11 +45,13 @@
   <span class="latitude"><%= @placeLat[i] %></span>
   <span class="longitude"><%= @placeLong[i] %></span>
   <span class="postalCode"><%= @placeLocality[i] %></span>
+  <span class="phoneNumber"><%= @phoneNumber[i]%></span>
+  <span class="address"><%= @address[i]%></span>
 
 
       <div class='more-items containter' style= "display:none">
         <div class = "col-md-4">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= @restaurantName[i] %> <span class="fa fa-plus-square-o"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= @restaurantName[i] %> <span class="fa fa-plus-square-o"></span></a>
           <ul class="dropdown-menu"><% @possibleItems.each do |item| %>
            <li class = "menu_item"><a><%= item[:name] %> : $<%= item[:price] %></a></li>
           <% end %>

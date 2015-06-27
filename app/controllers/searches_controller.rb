@@ -41,6 +41,8 @@ class SearchesController < ApplicationController
     @placeLocality = []
     @restaurantName = []
     @randomItem = []
+    @phoneNumber = []
+    @address = []
 
   end
 

@@ -1,6 +1,4 @@
-var prices = []
-var cuisines = []
-
+var prices = [];
 
 $(document).ready(function(){
     $("#submit").click(function(){
@@ -34,14 +32,13 @@ function showPosition(position) {
 
 // grabbing input values and location values to be used in ajax post for new search item
     var y = prices[prices.length - 1];
-    var z = cuisines[cuisines.length -1];
     var userLongitude = position.coords.longitude;
     var userLatitude = position.coords.latitude;
     // var placeLocality = document.getElementsByClassName("postalCode")[0].innerText;
 
 // finally calling ajax function to post data to new search object
 
-        ajax(y,z,userLatitude,userLongitude);
+        ajax(y,userLatitude,userLongitude);
         window.location.assign("/searches/show");
 
           // location.reload(true);
@@ -51,13 +48,13 @@ function showPosition(position) {
 
 // ajax function to post input data to new search object to be accessible by rails
 
-function ajax(price,cuisine,lat,long){
+function ajax(price,lat,long){
 
   $.ajax({
     type: "POST",
     url: "/searches",
     dataType: 'json',
-    data: { search: {cuisine: cuisine, price: price, latitude: lat, longitude: long}},
+    data: { search: {price: price, latitude: lat, longitude: long}},
   });
 
 }
@@ -75,7 +72,6 @@ function reloadLocation() {
 function showPositionAgain(position) {
 // grabbing input values and location values to be used in ajax post for new search item
     var y = prices[prices.length - 1];
-    var z = cuisines[cuisines.length -1];
     var userLongitude = position.coords.longitude;
     var userLatitude = position.coords.latitude;
 
@@ -119,18 +115,15 @@ function showPositionAgain(position) {
 
         marker2.setMap(map);
 
-        // var infowindow = new google.maps.InfoWindow({
-        //       content: "ITS YOU"
-        //     });
-        //
-        //     infowindow.open(map,marker2);
-
     for(var i = 0; i < 3; i++){
+
         var menuItem = document.getElementsByClassName("menuItem")[i].innerText;
         var placeLongitude = document.getElementsByClassName("longitude")[i].innerText;
         var placeLatitude = document.getElementsByClassName("latitude")[i].innerText;
         var restaurantName = document.getElementsByClassName("restaurantName")[i].innerText;
         var myCenter2 = new google.maps.LatLng(placeLatitude,placeLongitude);
+        var address = document.getElementsByClassName("address")[i].innerText;
+        var phoneNumber = document.getElementsByClassName("phoneNumber")[i].innerText;
 
         var marker = new google.maps.Marker({
           position:myCenter2
@@ -143,7 +136,8 @@ function showPositionAgain(position) {
 
         // google.maps.event.addListener(marker, 'click', function(){});
 
-        var contentString = '<div id="mapWindow"><h5>' + restaurantName + '</h5>' + '<p>' + menuItem + '</p></div>';
+        var contentString = '<div id="mapWindow"><h5>' + restaurantName + '</h5>' + '<p>' + menuItem + '</p>' +
+        '<a class="infoLink">more info</a>'+'<div class="additionalInfo" style="display:none;">'+ address + '<br>' + phoneNumber + '</div></div>';
 
         var infowindow = new google.maps.InfoWindow({
               content: contentString
@@ -159,6 +153,7 @@ function showPositionAgain(position) {
     // });
 
             infowindow.open(map,marker);
+
       }
 
 

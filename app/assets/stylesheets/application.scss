@@ -43,6 +43,7 @@ button#more_items {
     .navbar-nav {
         > li {
             > a {
+                margin-top: 5px;
                 color: $colDefault;
                 &:hover,  &:focus {
                     color: $colHighlight; }}}
@@ -122,18 +123,6 @@ input#price.form-control, button#submit.btn.btn-default {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
 }
-
-
-
-/*.fa-location-arrow{
-    width: 32px;
-    height: 34px;
-    border-radius: 15%;
-    background-color: #DE1B1B;
-    border: 2px solid #DE1B1B;
-    color: white;
-    margin-top: 2%;
-}*/
 
 
 
@@ -273,7 +262,7 @@ div.more-items {
 .empty {
     margin: 1%;
     width: 100%;
-    height: 50px;
+    height: 40px;
 }
 
 .empty1 {
@@ -310,3 +299,4 @@ div.more-items {
     width: 100%;
     height: 50px;
 }*/
+

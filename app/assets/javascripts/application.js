@@ -13,7 +13,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-
 //= require_tree
 
 $(window).load(function() { //start after HTML, images have loaded

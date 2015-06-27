@@ -39,7 +39,11 @@ function showPosition(position) {
 // finally calling ajax function to post data to new search object
 
         ajax(y,userLatitude,userLongitude);
-        window.location.assign("/searches/show");
+        $.get("/searches.json")
+        .done(function(data){
+          var page = data[data.length-1].id;
+          window.location.assign("/searches/" + page);
+        })
 
           // location.reload(true);
 

@@ -35,6 +35,7 @@ button#more_items {
     background-color: #B0E2FF;
     border-color: #B0E2FF;
     .navbar-brand {
+        margin-top:3px;
         color: $colDefault;
         &:hover, &:focus {
             color: $colHighlight; }}
@@ -98,21 +99,6 @@ body {
     margin-bottom: 10px;
 
 }
-
-.form-horizontal {
-    width: 100%;
-    height: 100px;
-    margin: 0 auto;
-    padding-left: 10%;
-    padding-right: 10%;
-    color: #00688B;
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    font-size: 18px;
-    opacity: 1;
-    filter: alpha(opacity=60);
-    border-radius: 5px;
-}
-
 
 input#price.form-control, button#submit.btn.btn-default {
     height: 100px;
@@ -285,10 +271,21 @@ div.more-items {
 #more_items {
     margin: 0 auto;
 }
-
-.menu_item {
-    color: #00688B;
+a.dropdown-toggle {
+    margin-top: 0 auto;
+}
+.dropdown-menu {
     text-align: center;
+    background-color: #00688B;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+.dropdown-menu > li > a {
+    width: 100%;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 #mapWindow h5{
@@ -301,8 +298,31 @@ div.more-items {
   font-size: 10px;
 }
 
-/*.empty2 {
+FOOTER {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+  
+
+}
+
+.footer {
+    position: relative;
     width: 100%;
+    color: white;
     height: 50px;
-}*/
+    text-align:left;
+    margin: 0 auto;
+    border-top: 1px solid grey;
+    padding-top: 1%;
+}
+
+.footer ul {
+    margin: 0 auto;
+}
+
+.footer span {
+    font-size: 10px;
+}
+
 

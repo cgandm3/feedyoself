@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-@search = Search.create(:price => 12.50, :latitude => 34.0187827, :longitude => -118.4893981)
+@search = Search.create(:price => 12.50, :latitude => 40.866576, :longitude => -74.071122)

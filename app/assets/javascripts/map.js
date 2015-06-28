@@ -4,6 +4,8 @@ $(document).ready(function(){
     $("#submit").click(function(){
       if(isNaN(document.getElementById("price").value)){
         $(".error").text("Please enter a valid dollar amount.");
+      } else if(document.getElementById("price").value.trim().length < 1){
+        $(".error").text("Please enter a valid dollar amount.");
       } else {
         $(".error").text("");
         $('#rotating-image').hide();
@@ -11,6 +13,22 @@ $(document).ready(function(){
       prices.push(document.getElementById("price").value);
       getLocation();
     }
+    });
+    $('.form-control').keypress(function (e) {
+      if (e.which == 13) {
+        if(isNaN(document.getElementById("price").value)){
+          $(".error").text("Please enter a valid dollar amount.");
+        } else if(document.getElementById("price").value.trim().length < 1){
+          $(".error").text("Please enter a valid dollar amount.");
+        } else {
+          $(".error").text("");
+          $('#rotating-image').hide();
+          $(".loadingPizza").show();
+        prices.push(document.getElementById("price").value);
+        getLocation();
+      }
+        return false;    //<---- Add this line
+      }
     });
     prices.push(document.getElementById("price").value);
     showPositionAgain();

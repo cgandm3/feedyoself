@@ -23,10 +23,10 @@ $(window).load(function() { //start after HTML, images have loaded
         init: function()
         {
             //initial fade-in time (in milliseconds)
-            var initialFadeIn = 7000;
+            var initialFadeIn = 0;
 
             //interval between items (in milliseconds)
-            var itemInterval = 10000;
+            var itemInterval = 5000;
 
             //cross-fade time (in milliseconds)
             var fadeTime = 0;

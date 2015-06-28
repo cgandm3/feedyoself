@@ -275,6 +275,14 @@ div.more-items {
      width: 100%;
     height: 40px;
 }
+.loadingPizza {
+  width: 350px;
+  height: 350px;
+  background-image: image-url('loading.gif');
+  background-size: cover;
+  margin: 0 auto;
+  border-radius: 10px;
+}
 
 .more_options {
     width: 100%;

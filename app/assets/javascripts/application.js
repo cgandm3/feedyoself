@@ -62,7 +62,7 @@ $(window).load(function() { //start after HTML, images have loaded
 $(document).ready(function(){
     $(".btn-default").click(function(){
         $('#rotating-image').hide();
-        $('#map').fadeIn('fast');
+        $(".loadingPizza").show();
     });
     $("#more_items").click(function(){
         $('.search').fadeToggle("slow");

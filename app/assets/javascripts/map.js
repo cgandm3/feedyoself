@@ -2,8 +2,15 @@ var prices = [];
 
 $(document).ready(function(){
     $("#submit").click(function(){
+      if(isNaN(document.getElementById("price").value)){
+        $(".error").text("Please enter a valid dollar amount.");
+      } else {
+        $(".error").text("");
+        $('#rotating-image').hide();
+        $(".loadingPizza").show();
       prices.push(document.getElementById("price").value);
       getLocation();
+    }
     });
     prices.push(document.getElementById("price").value);
     showPositionAgain();

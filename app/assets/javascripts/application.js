@@ -60,10 +60,7 @@ $(window).load(function() { //start after HTML, images have loaded
 });
 
 $(document).ready(function(){
-    $(".btn-default").click(function(){
-        $('#rotating-image').hide();
-        $(".loadingPizza").show();
-    });
+
     $("#more_items").click(function(){
         $('.search').fadeToggle("slow");
         $('.more-items').fadeToggle("slow");

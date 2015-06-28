@@ -3,12 +3,10 @@ var prices = [];
 $(document).ready(function(){
     $("#submit").click(function(){
       prices.push(document.getElementById("price").value);
-      // cuisines.push(document.getElementById("exampleInputName2").value);
       getLocation();
     });
     prices.push(document.getElementById("price").value);
-    // cuisines.push(document.getElementById("exampleInputName2").value);
-    reloadLocation();
+    showPositionAgain();
 });
 
 
@@ -26,7 +24,8 @@ function getLocation() {
     }
 }
 
-// if geolocation is available, runs showPosition function
+// if geolocation is available, runs showPosition function which grabs data to
+// post to ajax
 
 function showPosition(position) {
 
@@ -34,15 +33,18 @@ function showPosition(position) {
     var y = prices[prices.length - 1];
     var userLongitude = position.coords.longitude;
     var userLatitude = position.coords.latitude;
-    // var placeLocality = document.getElementsByClassName("postalCode")[0].innerText;
 
-// finally calling ajax function to post data to new search object
+// calling ajax function to post data to new search object
 
         ajax(y,userLatitude,userLongitude);
-        window.location.assign("/searches/show");
 
-          // location.reload(true);
+// getting the last id in order to redirect to the proper search show page
 
+        $.get("/searches.json")
+        .done(function(data){
+          var page = data[data.length-1].id;
+          window.location.assign("/searches/" + page);
+        })
 
 }
 
@@ -59,21 +61,24 @@ function ajax(price,lat,long){
 
 }
 
-function reloadLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPositionAgain);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
+// function reloadLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPositionAgain);
+//     } else {
+//         x.innerHTML = "Geolocation is not supported by this browser.";
+//     }
+// }
 
 // if geolocation is available, runs showPosition function
 
-function showPositionAgain(position) {
-// grabbing input values and location values to be used in ajax post for new search item
+function showPositionAgain() {
+
+  $.get("/searches.json")
+  .done(function(data){
+
     var y = prices[prices.length - 1];
-    var userLongitude = position.coords.longitude;
-    var userLatitude = position.coords.latitude;
+    var userLongitude = data[data.length-1].longitude;
+    var userLatitude = data[data.length-1].latitude;
 
     console.log(y);
     console.log(userLongitude);
@@ -165,7 +170,8 @@ function showPositionAgain(position) {
         $("#map").css({'background':'white'});
 
 
+  })
 
-// finally calling ajax function to post data to new search object
+
 
 }

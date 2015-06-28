@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :searches
+  get 'searches/' => "searches#index"
+
+  get 'searches/:id' => "searches#show", as: :search
+
+  post 'searches/' => "searches#create"
+
   root "searches#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

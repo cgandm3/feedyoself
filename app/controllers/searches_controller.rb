@@ -1,6 +1,5 @@
 class SearchesController < ApplicationController
 
-
   def index
 
     @searches = Search.all
@@ -22,9 +21,10 @@ class SearchesController < ApplicationController
 
     latitude = @search.latitude
     longitude = @search.longitude
-    @response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=1a6cfffb78fb611346b96a78087079c36173d8fa"
+    @response = HTTParty.get"https://api.locu.com/v1_0/venue/search/?location=#{latitude}%2C#{longitude}&has_menu=TRUE&radius=2000&category=restaurant&api_key=7a3583e12a33f7edc1b626c5fdbba42a266d11c4"
     @places = []
     @randomItem = []
+
   end
 
   def new
@@ -40,6 +40,7 @@ class SearchesController < ApplicationController
     if @search.save
       render searches_path
     end
+
   end
 
   def about

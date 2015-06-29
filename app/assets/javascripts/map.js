@@ -225,6 +225,8 @@ function showPositionAgain() {
         var myCenter2 = new google.maps.LatLng(placeLatitude, placeLongitude);
         var address = document.getElementsByClassName("address")[i].innerText;
         var phoneNumber = document.getElementsByClassName("phoneNumber")[i].innerText;
+        var callableNumber = phoneNumber.replace(/\D/g,'');
+        console.log(callableNumber);
 
         var marker = new google.maps.Marker({
           position: myCenter2
@@ -234,20 +236,18 @@ function showPositionAgain() {
         marker.setMap(map);
         bounds.extend(marker.position);
 
-        // google.maps.event.addListener(marker, 'click', function(){});
-
-        var contentString = '<div id="mapWindow"><h5>' + restaurantName + '</h5>' + '<p>' + menuItem + '</p>'
-          + '<div class="additionalInfo">' + address + '<br>' + phoneNumber + '</div></div>';
+        var contentString = '<div id="mapWindow"><h5>' + restaurantName + '</h5>'
+        + '<p>' + menuItem + '</p>' + '<div class="additionalInfo">' + address + '<br>'
+        + '<a href="tel:' + callableNumber +'">' + phoneNumber + '</a></div></div>';
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString,
-          hideCloseButton: true
         });
 
         infowindow.open(map, marker);
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map,marker);
+          infowindow.open(marker.get('map'), marker);
         });
 
       }

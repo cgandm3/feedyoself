@@ -5,14 +5,19 @@
 
 <span id="results">
 
- <!-- Until there are possible items from particular restaurant lower than input count, look for another restaurant   -->
+  <!-- loop through the following 3 times in order to display 3 different local restaurants -->
 
  <% for i in 0..2 %>
   <% @possibleItems = [] %>
+
+  <!-- Until there are possible items from particular restaurant lower than input count, look for another restaurant   -->
+
   <% until @possibleItems.length > 0 do %>
     <% @response["objects"].sample(1).each do |place| %>
 
       <% @places << place %>
+
+      <!-- grabs random local restaurant menu near users location -->
 
     <% @menu = HTTParty.get"https://api.locu.com" + place["resource_uri"] + "?api_key=7a3583e12a33f7edc1b626c5fdbba42a266d11c4" %>
 
@@ -21,6 +26,8 @@
   <% @menu["objects"][0]["menus"][0]["sections"].each do |section| %>
 
     <% section["subsections"][0]["contents"].each do |item| %>
+
+    <!-- filters through API call to get menu items that match users search criteria -->
 
       <% if (item["price"].to_i < Search.last.price.to_i && item["price"].to_i > 0) %>
         <% @possibleItems << {name: item["name"], price: item["price"]} %>
@@ -49,6 +56,8 @@
             <%= @places[i]["name"] %> <span class="fa fa-plus-square"></span>
           </a>
 
+          <!-- show additional items that match criteria if user chooses to do so -->
+
           <ul class="dropdown-menu"><% @possibleItems.each do |item| %>
            <li class = "menu_item"><a><%= item[:name] %> : $<%= item[:price] %></a></li>
           <% end %>
@@ -56,6 +65,8 @@
           </div>
         </div>
       </div>
+
+      <!-- shoveling a randomItem that fits search criteria to be displayed -->
 
   <% @randomItem << @possibleItems.sample(1) %>
   <h2 class="menuItem" style="display:none">

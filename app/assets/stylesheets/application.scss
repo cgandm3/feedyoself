@@ -1,157 +1,162 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 .navbar {
-        margin-bottom: 0px;
-    }
-
-
-$bgHighlight : #F6F6F6;
-$colDefault     : black;
-$colHighlight   : white;
-
-* {
-font-family: 'Raleway', sans-serif;
-font-weight: bold;
+  margin-bottom: 0;
 }
-
+$bgHighlight: #f6f6f6;
+$colDefault: black;
+$colHighlight: white;
+* {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
 a.fa.fa-users {
   font-family: 'Raleway', sans-serif;
 }
-
 a.fa.fa-camera {
   font-family: 'Raleway', sans-serif;
 }
-
 a.fa.fa-home {
   font-family: 'Raleway', sans-serif;
 }
-
 button#more_items {
   font-family: 'Raleway', sans-serif;
 }
-
 .navbar-default {
-    background-color: #B0E2FF;
-    border-color: #B0E2FF;
-    .navbar-brand {
-        margin-top:3px;
-        color: $colDefault;
-        &:hover, &:focus {
-            color: $colHighlight; }}
-    .navbar-text {
-        color: white; }
-    .navbar-nav {
-        > li {
-            > a {
-                margin-top: 5px;
-                color: $colDefault;
-                &:hover,  &:focus {
-                    color: $colHighlight; }}}
-        > .active {
-            > a, > a:hover, > a:focus {
-                color: $colHighlight;
-                background-color: $bgHighlight; }}
-        > .open {
-            > a, > a:hover, > a:focus {
-                color: $colHighlight;
-                background-color: $bgHighlight; }}}
-    .navbar-toggle {
-        border-color: $colDefault;
-        &:hover, &:focus {
-            background-color: white; }
-        .icon-bar {
-            background-color:$colDefault ; }}
-    .navbar-collapse,
-    .navbar-form {
-        border-color: $colDefault; }
-    .navbar-link {
-        color: $colDefault;
-        &:hover {
-            color: $colHighlight; }}}
-
-
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu {
-        > li > a {
-            color: $colDefault;
-            &:hover, &:focus {
-                color: $colHighlight; }}
-        > .active {
-            > a, > a:hover, > a:focus, {
-                color: $colHighlight;
-                background-color: $bgHighlight; }}}
-}
-
-
-body {
-    background-color: black;
-    position: relative;
-
-}
-
-.search {
-    width: 100%;
-    height: 5%;
-    text-align: center;
-    margin-top: 5%;
-    display: inline-block;
-    margin-bottom: 10px;
-
-}
-
-input#price.form-control, button#submit.btn.btn-default {
-    height: 100px;
-    width: 250px;
-    font-size: 29px;
-    text-align: center;
-    margin: 5px auto;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-}
-
-
-
-.btn-default {
-    background-color: #00688B;
-    border-color: #00688B;
-    height: 34px;
+  background-color: #b0e2ff;
+  border-color: #b0e2ff;
+  .navbar-brand {
+    margin-top: 3px;
+    color: $colDefault;
+    &:hover,
+    &:focus {
+      color: $colHighlight;
+    }
+  }
+  .navbar-text {
     color: white;
-    font-family: Lato;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        margin-top: 5px;
+        color: $colDefault;
+        &:hover,
+        &:focus {
+          color: $colHighlight;
+        }
+      }
+    }
+    > .active {
+      > a,
+      > a:hover,
+      > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+    > .open {
+      > a,
+      > a:hover,
+      > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: $colDefault;
+    &:hover,
+    &:focus {
+      background-color: white;
+    }
+    .icon-bar {
+      background-color: $colDefault;
+    }
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault;
+  }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight;
+    }
+  }
 }
-
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover,
+      &:focus {
+        color: $colHighlight;
+      }
+    }
+    > .active {
+      > a,
+      > a:hover,
+      > a:focus,
+       {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+}
+body {
+  background-color: black;
+  position: relative;
+}
+.search {
+  width: 100%;
+  height: 5%;
+  text-align: center;
+  margin-top: 5%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+input#price.form-control,
+button#submit.btn.btn-default {
+  height: 100px;
+  width: 250px;
+  font-size: 29px;
+  text-align: center;
+  margin: 5px auto;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+.btn-default {
+  background-color: #00688b;
+  border-color: #00688b;
+  height: 34px;
+  color: white;
+  font-family: Lato;
+}
 .btn-default:hover {
-    background-color: white;
-    color: #00688B;
-
+  background-color: white;
+  color: #00688b;
 }
-
-
 #rotating-item-wrapper {
-    width: 100%;
-    margin: 0 auto;
-    position: absolute;
-
-
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
 }
-
-
 .rotating-item {
-    width: 80%;
-    display: none;
-    margin: 0 auto;
-    list-style-type: none;
-    position: relative;
+  width: 80%;
+  display: none;
+  margin: 0 auto;
+  list-style-type: none;
+  position: relative;
 }
-
 img {
-    width: 25%;
-    margin: 0 auto;
-    border: 5px solid white;
-    opacity: 0.8;
-    filter: alpha(opacity=80);
+  width: 25%;
+  margin: 0 auto;
+  border: 5px solid white;
+  opacity: 0.8;
+  filter:alpha(opacity=80);
 }
-
 #map {
   position: relative;
   width: 90%;
@@ -162,7 +167,6 @@ img {
   background-image: image-url('loading.gif');
   background-size: cover;
 }
-
 .restaurantName {
   display: none;
 }
@@ -181,60 +185,45 @@ img {
 .address {
   display: none;
 }
-
-
 .modal-content {
-    width: 100%;
+  width: 100%;
 }
-
 .about {
-    color: blue;
-    background-color: black;
+  color: blue;
+  background-color: black;
 }
-
 h3 {
-    text-align: center;
+  text-align: center;
 }
-
 .title {
-    text-align: center;
-    color: #00688B;
+  text-align: center;
+  color: #00688b;
 }
-
 .quote {
-    color: grey;
+  color: grey;
 }
-
 .developer {
-
-    width: 30%;
-    opacity: 0.8;
-    filter: alpha(opacity=80);
-    margin: 0 auto;
-    list-style-type: none;
-    text-align: center
+  width: 30%;
+  opacity: 0.8;
+  filter:alpha(opacity=80);
+  margin: 0 auto;
+  list-style-type: none;
+  text-align: center;
 }
-
-
-.response{
-    margin-top: 10%;
-    width: 100%;
-    height: 500px;
+.response {
+  margin-top: 10%;
+  width: 100%;
+  height: 500px;
 }
-
 hr {
-    width: 60%;
+  width: 60%;
 }
-
 #meet {
-    padding: 20px 20px 20px 20px;
+  padding: 20px;
 }
-
 .img1 {
-    width: 100%;
+  width: 100%;
 }
-
-
 div.more-items {
   margin: 15% auto;
   font-size: 15px;
@@ -242,24 +231,18 @@ div.more-items {
   color: white;
   border-radius: 5%;
   width: 90%;
-
 }
-
-
 .close {
-    color: white;
+  color: white;
 }
-
-
 .empty {
-    margin: 1%;
-    width: 100%;
-    height: 40px;
+  margin: 1%;
+  width: 100%;
+  height: 40px;
 }
-
 .empty1 {
-     width: 100%;
-    height: 40px;
+  width: 100%;
+  height: 40px;
 }
 .loadingPizza {
   width: 350px;
@@ -269,40 +252,36 @@ div.more-items {
   margin: 0 auto;
   border-radius: 10px;
 }
-
 .more_options {
-    width: 100%;
-    height: 50px;
-    text-align: center;
+  width: 100%;
+  height: 50px;
+  text-align: center;
 }
-
 #more_items {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 a.dropdown-toggle {
-    margin-top: 0 auto;
+  margin-top: 0 auto;
 }
 .dropdown-menu {
-    text-align: center;
-    background-color: #00688B;
-    width: 80%;
-    margin: 0 auto;
-    padding: 0 auto;
+  text-align: center;
+  background-color: #00688b;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 auto;
 }
 .dropdown-menu > li > a {
-    width: 100%;
-    color: white;
-    border: 2px solid white;
-    border-radius: 5px;
+  width: 100%;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
 }
-
-#mapWindow h5{
-  color: #00688B;
+#mapWindow h5 {
+  color: #00688b;
   font-weight: bold;
   font-size: 12px;
 }
-
-#mapWindow p{
+#mapWindow p {
   font-size: 10px;
 }
 .error {
@@ -310,16 +289,12 @@ a.dropdown-toggle {
   font-size: 16px;
 }
 FOOTER {
-    width: 100%;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 10%;
-
-
+  width: 100%;
+  text-align: center;
+  margin: 10% auto 0;
 }
-
 .footer {
-    position: relative;
+  position: relative;
 }
 #submit input {
   border-radius: 10px;
@@ -331,7 +306,7 @@ FOOTER {
   margin: 5px auto;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-  background-color: #00688B;
+  background-color: #00688b;
   color: white;
   margin: 0 auto;
 }

@@ -1,12 +1,35 @@
 var prices = [];
 
+// on document ready do the following
+
 $(document).ready(function() {
+
+  // on submit button click, detect if a valid price is present and continue
+  // through to getLocation (and display loading pizza), else inform user of error
+
   $("#submit").click(function() {
+
+    // first checks if input value is a string
+
     if (isNaN(document.getElementById("price").value)) {
-      $(".error").text("Please enter a valid dollar amount.");
-    } else if (document.getElementById("price").value.trim().length < 1) {
-      $(".error").text("Please enter a valid dollar amount.");
-    } else {
+      $(".error").text("Please enter a valid dollar amount");
+    }
+
+    // next checks if only whitespace is entered
+
+    else if (document.getElementById("price").value.trim().length < 1) {
+      $(".error").text("Please enter a valid dollar amount");
+    }
+
+    // finally checks if dollar amount is less than $5.00
+
+     else if (document.getElementById("price").value < 5) {
+      $(".error").text("Please enter a dollar amount of at least $5.00");
+    }
+
+    // else set error text to blank, hide food images, display loading pizza, and getLocation()
+
+     else {
       $(".error").text("");
       $('#rotating-image').hide();
       $(".loadingPizza").show();
@@ -14,27 +37,50 @@ $(document).ready(function() {
       getLocation();
     }
   });
+
+  // on enter key pressed, detect if a valid price is present and continue
+  // through to getLocation (and display loading pizza), else inform user of error
+
   $('.form-control').keypress(function(e) {
     if (e.which == 13) {
+
+      // first checks if input value is a string
+
       if (isNaN(document.getElementById("price").value)) {
-        $(".error").text("Please enter a valid dollar amount.");
-      } else if (document.getElementById("price").value.trim().length < 1) {
-        $(".error").text("Please enter a valid dollar amount.");
-      } else {
+        $(".error").text("Please enter a valid dollar amount");
+      }
+
+      // next checks if only whitespace is entered
+
+       else if (document.getElementById("price").value.trim().length < 1) {
+        $(".error").text("Please enter a valid dollar amount");
+      }
+
+      // finally checks if dollar amount is less than $5.00
+
+       else if (document.getElementById("price").value < 5) {
+        $(".error").text("Please enter a dollar amount of at least $5.00");
+      }
+
+      // else set error text to blank, hide food images, display loading pizza, and getLocation()
+
+       else {
         $(".error").text("");
         $('#rotating-image').hide();
         $(".loadingPizza").show();
         prices.push(document.getElementById("price").value);
         getLocation();
       }
-      return false; //<---- Add this line
+      return false;
     }
   });
+
   prices.push(document.getElementById("price").value);
   showPositionAgain();
+
 });
 
-
+// in case user doesn't have geolocation, demo div will display the error
 
 var x = document.getElementById("demo");
 
@@ -55,6 +101,7 @@ function getLocation() {
 function showPosition(position) {
 
   // grabbing input values and location values to be used in ajax post for new search item
+
   var y = prices[prices.length - 1];
   var userLongitude = position.coords.longitude;
   var userLatitude = position.coords.latitude;
@@ -69,7 +116,7 @@ function showPosition(position) {
     .done(function(data) {
       var page = data[data.length - 1].id;
       window.location.assign("/searches/" + page);
-    })
+    });
 
 }
 
@@ -92,15 +139,7 @@ function ajax(price, lat, long) {
 
 }
 
-// function reloadLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPositionAgain);
-//     } else {
-//         x.innerHTML = "Geolocation is not supported by this browser.";
-//     }
-// }
-
-// if geolocation is available, runs showPosition function
+// showPositionAgain function displays the map based on last posted search
 
 function showPositionAgain() {
 
@@ -111,15 +150,13 @@ function showPositionAgain() {
       var userLongitude = data[data.length - 1].longitude;
       var userLatitude = data[data.length - 1].latitude;
 
-      console.log(y);
-      console.log(userLongitude);
-      console.log(placeLatitude);
-
       var bounds = new google.maps.LatLngBounds();
 
       var myCenter = new google.maps.LatLng(userLatitude, userLongitude);
 
       var marker;
+
+      // setting mapProp and stylizing black and white map
 
       var mapProp = {
         center: myCenter,
@@ -211,12 +248,19 @@ function showPositionAgain() {
         position: myCenter,
       });
 
+      // displays happy face to show current users position, animates to bounce
+
       marker2.setIcon('http://www.thatscoop.com/app/webroot/img/emoticons/happy.png');
       marker2.setAnimation(google.maps.Animation.BOUNCE);
 
       marker2.setMap(map);
 
+      // for loop to loop through the 3 restaurants returned in API call and add
+      // markers to the map with info
+
       for (var i = 0; i < 3; i++) {
+
+        // storing variables necessary to place proper coordinates and info
 
         var menuItem = document.getElementsByClassName("menuItem")[i].innerText;
         var placeLongitude = document.getElementsByClassName("longitude")[i].innerText;
@@ -225,8 +269,10 @@ function showPositionAgain() {
         var myCenter2 = new google.maps.LatLng(placeLatitude, placeLongitude);
         var address = document.getElementsByClassName("address")[i].innerText;
         var phoneNumber = document.getElementsByClassName("phoneNumber")[i].innerText;
+
+        // strips phoneNumber of non digits in order to be used as a telephone link
+
         var callableNumber = phoneNumber.replace(/\D/g,'');
-        console.log(callableNumber);
 
         var marker = new google.maps.Marker({
           position: myCenter2
@@ -234,7 +280,12 @@ function showPositionAgain() {
         });
         marker.setIcon('http://www.flawlessmilano.com/private/wp-content/themes/flawless/images/food-icon.png');
         marker.setMap(map);
+
+        // extends bounds based on marker location
+
         bounds.extend(marker.position);
+
+        // sets contentString to be used in infowindow
 
         var contentString = '<div id="mapWindow"><h5>' + restaurantName + '</h5>'
         + '<p>' + menuItem + '</p>' + '<div class="additionalInfo">' + address + '<br>'
@@ -246,17 +297,15 @@ function showPositionAgain() {
 
         infowindow.open(map, marker);
 
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(marker.get('map'), marker);
-        });
-
       }
 
-
       // extending the bounds of the map to show both current location and restaraunt
+
       bounds.extend(marker2.position);
 
       map.fitBounds(bounds);
+
+      // rids of loading pizza background
 
       $("#map").css({
         'background': 'white'
